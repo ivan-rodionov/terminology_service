@@ -19,41 +19,74 @@
 - Получение списка справочников с фильтрацией по дате.
 - Получение элементов указанной или текущей версии.
 - Проверка существования элемента по коду и значению.
-- Документация Swagger
+- Документация REST API через Swagger.
+- Автоматические тесты API.
 
 ## API
 
 | Метод | Эндпоинт | Описание |
 |---|---|---|
-| GET | `/refbooks/` | Список справочников |
-| GET | `/refbooks/?date=2026-01-01` | Справочники, действующие на дату |
-| GET | `/refbooks/1/elements?version=1.0` | Элементы версии |
-| GET | `/refbooks/1/check_element?code=1&value=Терапевт` | Проверка элемента |
+| GET | `/refbooks/` | Список всех справочников |
+| GET | `/refbooks/?date=2026-01-01` | Справочники с версиями, начавшими действовать не позже указанной даты |
+| GET | `/refbooks/1/elements?version=1.0` | Элементы указанной версии |
+| GET | `/refbooks/1/check_element?code=1&value=Терапевт` | Проверка элемента по коду и значению |
 
-Если версия не указана, используется текущая — с наиболее поздней датой начала действия, не превышающей сегодняшнюю дату.
+Если параметр `version` не указан, используется текущая версия — с наиболее поздней датой начала действия, не превышающей сегодняшнюю дату.
 
 ## Локальный запуск
 
 **1. Создать и активировать виртуальное окружение:**
 
-`python3.12 -m venv .venv`
-
-`source .venv/bin/activate`
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+```
 
 **2. Установить зависимости:**
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 **3. Применить миграции:**
 
-`python manage.py migrate`
+```bash
+python manage.py migrate
+```
 
-**4. Создать администратора (при необходимости):**
+**4. Загрузить демонстрационные данные (необязательно):**
 
-`python manage.py createsuperuser`
+```bash
+python manage.py loaddata demo_refbooks.json
+```
 
-**5. Запустить сервер:**
+**5. Создать администратора (при необходимости):**
 
-`python manage.py runserver`
+```bash
+python manage.py createsuperuser
+```
 
-Административная панель: `http://127.0.0.1:8000/admin/`
+**6. Запустить сервер:**
+
+```bash
+python manage.py runserver
+```
+
+После запуска доступны:
+
+- Django Admin: http://127.0.0.1:8000/backend/admin/
+- Swagger: http://127.0.0.1:8000/backend/swagger/
+
+## Тестирование
+
+Запуск автоматических тестов API:
+
+```bash
+python manage.py test refbooks
+```
+
+Проверка кода с помощью Ruff:
+
+```bash
+ruff check .
+```

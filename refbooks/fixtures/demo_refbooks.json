@@ -1,0 +1,227 @@
+[
+  {
+    "model": "refbooks.refbook",
+    "pk": 1,
+    "fields": {
+      "code": "SPEC",
+      "name": "Специальности медицинских работников",
+      "description": "Справочник специальностей врачей."
+    }
+  },
+  {
+    "model": "refbooks.refbook",
+    "pk": 2,
+    "fields": {
+      "code": "ICD-10",
+      "name": "Международная классификация болезней (демо)",
+      "description": "Демонстрационный фрагмент МКБ-10 для проверки API."
+    }
+  },
+  {
+    "model": "refbooks.refbook",
+    "pk": 3,
+    "fields": {
+      "code": "DOC-TYPE",
+      "name": "Типы медицинских документов",
+      "description": "Демонстрационный справочник с версией, которая начнёт действовать в будущем."
+    }
+  },
+  {
+    "model": "refbooks.refbookversion",
+    "pk": 1,
+    "fields": {
+      "refbook": 1,
+      "version": "1.0",
+      "start_date": "2022-01-01"
+    }
+  },
+  {
+    "model": "refbooks.refbookversion",
+    "pk": 2,
+    "fields": {
+      "refbook": 1,
+      "version": "2.0",
+      "start_date": "2025-01-01"
+    }
+  },
+  {
+    "model": "refbooks.refbookversion",
+    "pk": 3,
+    "fields": {
+      "refbook": 1,
+      "version": "3.0",
+      "start_date": "2027-01-01"
+    }
+  },
+  {
+    "model": "refbooks.refbookversion",
+    "pk": 4,
+    "fields": {
+      "refbook": 2,
+      "version": "1.0",
+      "start_date": "2023-01-01"
+    }
+  },
+  {
+    "model": "refbooks.refbookversion",
+    "pk": 5,
+    "fields": {
+      "refbook": 3,
+      "version": "1.0",
+      "start_date": "2027-01-01"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 1,
+    "fields": {
+      "version": 1,
+      "code": "1",
+      "value": "Врач-терапевт"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 2,
+    "fields": {
+      "version": 1,
+      "code": "2",
+      "value": "Травматолог-ортопед"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 3,
+    "fields": {
+      "version": 1,
+      "code": "3",
+      "value": "Хирург"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 4,
+    "fields": {
+      "version": 2,
+      "code": "1",
+      "value": "Врач-терапевт"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 5,
+    "fields": {
+      "version": 2,
+      "code": "2",
+      "value": "Травматолог-ортопед"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 6,
+    "fields": {
+      "version": 2,
+      "code": "3",
+      "value": "Хирург"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 7,
+    "fields": {
+      "version": 2,
+      "code": "4",
+      "value": "Кардиолог"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 8,
+    "fields": {
+      "version": 3,
+      "code": "1",
+      "value": "Врач общей практики"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 9,
+    "fields": {
+      "version": 3,
+      "code": "2",
+      "value": "Травматолог-ортопед"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 10,
+    "fields": {
+      "version": 3,
+      "code": "3",
+      "value": "Хирург"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 11,
+    "fields": {
+      "version": 3,
+      "code": "4",
+      "value": "Кардиолог"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 12,
+    "fields": {
+      "version": 3,
+      "code": "5",
+      "value": "Невролог"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 13,
+    "fields": {
+      "version": 4,
+      "code": "J00",
+      "value": "Острый назофарингит (насморк)"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 14,
+    "fields": {
+      "version": 4,
+      "code": "J01",
+      "value": "Острый синусит"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 15,
+    "fields": {
+      "version": 4,
+      "code": "S99",
+      "value": "Другие и неуточнённые травмы голеностопного сустава и стопы"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 16,
+    "fields": {
+      "version": 5,
+      "code": "REFERRAL",
+      "value": "Направление"
+    }
+  },
+  {
+    "model": "refbooks.refbookelement",
+    "pk": 17,
+    "fields": {
+      "version": 5,
+      "code": "DISCHARGE",
+      "value": "Выписка"
+    }
+  }
+]
