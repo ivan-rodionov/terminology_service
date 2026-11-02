@@ -15,6 +15,10 @@ class RefbookListParamsSerializer(serializers.Serializer):
     date = serializers.DateField(required=False, help_text='Дата в формате ГГГГ-ММ-ДД')
 
 
+class RefbookActualParamsSerializer(serializers.Serializer):
+    date = serializers.DateField(required=True)
+
+
 class RefbookElementSerializer(serializers.ModelSerializer):
     class Meta:
         model = RefbookElement
