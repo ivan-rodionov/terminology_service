@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from refbooks.models import Refbook
 from refbooks.serializers import (
+    RefbookActualParamsSerializer,
     RefbookCheckElementParamsSerializer,
     RefbookElementSerializer,
     RefbookListParamsSerializer,
@@ -119,3 +120,27 @@ class RefbookCheckElementView(APIView):
         ).exists()
 
         return Response({'valid': is_valid})
+
+
+class RefbookActualView(APIView):
+    @extend_schema(summary='Актуальная версия справочника на заданную дату', parameters=[RefbookActualParamsSerializer])
+    def get(self, request: Request, refbook_id: int) -> Response:
+        params = RefbookActualParamsSerializer(data=request.query_params)
+        params.is_valid(raise_exception=True)
+
+        date = params.validated_data['date']
+
+        refbook = get_object_or_404(Refbook, pk=refbook_id)
+
+        version = get_selected_version(refbook=refbook, date=date)
+
+        elements = version.elements.all().order_by('id')
+
+        return Response(
+            {
+                'refbook': RefbookSerializer(refbook).data,
+                'version': version.version,
+                'start_date': version.start_date.isoformat(),
+                'elements': RefbookElementSerializer(elements, many=True).data,
+            }
+        )
